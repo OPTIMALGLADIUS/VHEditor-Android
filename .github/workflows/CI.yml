@@ -5,6 +5,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive 
       - uses: actions/setup-java@v1
         with:
           java-version: '17.x'
@@ -17,8 +20,6 @@ jobs:
       - name: "build jsbundle"
         run: |
           npm run bundle-rnjs
-      - uses: actions/checkout@v4
-        with:
-          submodules: recursive
+      
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
